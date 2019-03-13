@@ -10,6 +10,7 @@ country_list <- as.character(data[,1])
 year_range <- range(data$year)
 
 ui <- fluidPage(
+  theme = "style.css",
   # title
   titlePanel("Suicide Rates Overview 1985 to 2016"),
   tabsetPanel(
@@ -79,9 +80,13 @@ ui <- fluidPage(
             min = year_range[1],
             max = year_range[2],
             value = year_range,
-            round = T,
-            format = "####"
-          )
+            step = 1
+          ),
+          sliderInput("animation", "Looping Animation:",
+                      min = year_range[1], max = year_range[2],
+                      value = 1, step = 1,
+                      animate =
+                        animationOptions(interval = 300, loop = TRUE))
         ), mainPanel(
           plotlyOutput("plot3")
         )
