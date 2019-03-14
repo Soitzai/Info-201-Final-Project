@@ -5,23 +5,32 @@ library("dplyr")
 library("plotly")
 library("rsconnect")
 
+# load in the data
 data <- read.csv("./data/master.csv")
+# filter out data from 2016 since the data for 2016 is not complete
+# we will only use data from 1985 to 2015 for this project
 data <- data %>% filter(year != 2016)
+# country names in the data
 country_list <- unique(as.character(data[, 1]))
+# year range in the data
+# 1985 to 2015
 year_range <- range(data$year)
+# gdp per capita range in the data
 gdp_range <- range(data$gdp_per_capita....)
 
+# create the ui for the shiny app
 ui <- fluidPage(
+  # link the css file
   theme = "style.css",
-  # title
   titlePanel("Suicide Rates Overview 1985 to 2015"),
   tabsetPanel(
-    #first page
+    #Overall page
     tabPanel(
       "Overview",
       sidebarLayout(
         sidebarPanel(
           class = "side",
+          # introduction to the project
           tags$div(h3("Intro"),
                    tags$b("Suicide is one of the top ten common causes of death
                           in the world. People may consider suicide when they
@@ -86,11 +95,12 @@ ui <- fluidPage(
                  "GET HELP NOW!")
           )
                    )
-        ), tabPanel(
+        ), tabPanel( #first page
           "By Age-Group & Sex",
           sidebarLayout(
             sidebarPanel(
               class = "side",
+              # radio select button
               radioButtons(
                 "radio",
                 label = "Select the age group",
@@ -102,16 +112,20 @@ ui <- fluidPage(
                                "75+ years",
                                "all age group"
                 ),
+                # set the default value
                 selected = "25-34 years"
               ),
+              # select to show which year's data
               selectInput(
                 "vertical",
                 label = "Show vertical line in year(s):",
                 choices = 1985:2015,
                 multiple = FALSE
               ),
+              # select to add a horizontal line to better see the data or not
               checkboxInput("hor", "Show horizontal axis", TRUE)
             ),
+            # show the result of the page
             mainPanel(
               h3(""),
               class = "main",
@@ -143,12 +157,12 @@ ui <- fluidPage(
                        )
                        )
               )
-          ), tabPanel( #second page
+          ), tabPanel( #page analysis by GDP
             "By GDP",
             sidebarLayout(
               sidebarPanel(
                 class = "side",
-                # selection
+                # selection of the interested year
                 selectInput(
                   "input_year",
                   label = "Which year:",
@@ -158,7 +172,9 @@ ui <- fluidPage(
               ), mainPanel(
                 h3(""),
                 class = "main",
+                # show the graph of the scartter plot and regression line
                 plotOutput("scartter_plot"),
+                # description of the graph
                 tags$div(checked = NA, class = "discription",
                          tags$p("This plot shows the comparison of GDP per capita
                                 and the number of suicides per 100k population in
@@ -171,6 +187,7 @@ ui <- fluidPage(
                                 GDP per capita tends to have a higher suicides
                                 number per 100k population.")
                          ),
+                # show the comparison between year
                 plotOutput("comparison"),
                 tags$div(checked = NA, class = "discription",
                          tags$p("To see how the relationship between GDP per
@@ -185,63 +202,64 @@ ui <- fluidPage(
                                 value, that means country with a higher GDP per
                                 capita tends to have a higher suicides number per
                                 100k population."
-                         ))
                          )
                          )
-                         ), tabPanel( #third page
-                           "By Country",
-                           sidebarLayout(
-                             sidebarPanel(
-                               class = "side",
-                               # selection
-                               selectInput(
-                                 "select",
-                                 label = "Country",
-                                 choices = country_list,
-                                 selected = "United States"
-                               ),
-                               sliderInput(
-                                 "year_second",
-                                 label = "Year",
-                                 min = year_range[1],
-                                 max = year_range[2],
-                                 value = year_range
-                               )
-                             ), mainPanel(
-                               h3(""),
-                               class = "main",
-                               plotOutput("plot2"),
-                               tags$div(checked = NA, class = "discription",
-                                        tags$p("This plot shows the number of suicides
-                                               in selected country during the selected
-                                               year period. It helps the users to
-                                               understand the suicide trend in a certain
-                                               country. By understanding the trend, the
-                                               governments/organizations can better
-                                               understand the suicide situation in
-                                               the country and therefore use appropriate
-                                               strategies to reduce the suicides."
-                                        ),
-                                        tags$p("With the default values, suicide numbers
-                                               in the United States from 1985 to 2015,
-                                               we get the graph above, which shows the
-                                               trend of the number of suicides. The graph
-                                               shows that there is an incresing amount of
-                                               suicides in the United States, especially
-                                               after the year of 2000. It alerts the
-                                               governments/organizations to pay more
-                                               attentions about suicides situations
-                                               in the United States.")
-                                        )
-                                        )
-                                        )
-                                        ),
+                )
+              )
+            ), tabPanel( #third page
+              "By Country",
+              sidebarLayout(
+                sidebarPanel(
+                  class = "side",
+                  # selection
+                  selectInput(
+                    "select",
+                    label = "Country",
+                    choices = country_list,
+                    selected = "United States"
+                    ),
+                  sliderInput(
+                    "year_second",
+                    label = "Year",
+                    min = year_range[1],
+                    max = year_range[2],
+                    value = year_range
+                    )
+                  ), mainPanel(
+                    h3(""),
+                    class = "main",
+                    plotOutput("plot2"),
+                    tags$div(checked = NA, class = "discription",
+                    tags$p("This plot shows the number of suicides
+                            in selected country during the selected
+                            year period. It helps the users to
+                            understand the suicide trend in a certain
+                            country. By understanding the trend, the
+                            governments/organizations can better
+                            understand the suicide situation in
+                            the country and therefore use appropriate
+                            strategies to reduce the suicides."
+                           ),
+                    tags$p("With the default values, suicide numbers
+                            in the United States from 1985 to 2015,
+                            we get the graph above, which shows the
+                            trend of the number of suicides. The graph
+                            shows that there is an incresing amount of
+                            suicides in the United States, especially
+                            after the year of 2000. It alerts the
+                            governments/organizations to pay more
+                            attentions about suicides situations
+                            in the United States.")
+                    )
+                    )
+                )
+              ),
     tabPanel( #Third page
       "Map",
       sidebarLayout(
         sidebarPanel(
           class = "side",
-          # selection
+          # selection of the year range of interest
           sliderInput(
             "year_third",
             label = "Year",
@@ -250,6 +268,7 @@ ui <- fluidPage(
             value = year_range,
             step = 1
           ),
+          # seelct the gdp range of interest
           sliderInput("gdp_third",
                       "GDP per capital",
                       min = gdp_range[1], max = gdp_range[2],
@@ -272,9 +291,9 @@ ui <- fluidPage(
                           trend over suicide rate as the GDP per capital
                           progress.")
                    )
-                   )
-                   )
-                   )
-                   )
+          )
         )
+      )
+    )
+  )
 shinyUI(ui)
