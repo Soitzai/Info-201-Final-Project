@@ -102,6 +102,7 @@ ui <- fluidPage(
         ),
         mainPanel(
           h3(""),
+          class = "main",
           plotOutput("line_chart"),
           tags$div(checked = NA, class = "discription",
                    tags$p("This plot shows the numbers of suicides per 100k population from 1985 to 2015, either for 
@@ -133,6 +134,7 @@ ui <- fluidPage(
           )
         ), mainPanel(
           h3(""),
+          class = "main",
           plotOutput("scartter_plot"),
           tags$div(checked = NA, class = "discription",
                    tags$p("This plot shows the comparison of GDP per capita and the number 
@@ -143,6 +145,7 @@ ui <- fluidPage(
                           slightly upward, which indicates that in 1985, a country with higher GDP per capita
                           tends to have a higher suicides number per 100k population.")
                    ),
+          h3(""),
           plotOutput("comparison"),
           tags$div(checked = NA, class = "discription",
                    tags$p("To see how the relationship between GDP per capita and suicides per 100k population 
@@ -176,6 +179,7 @@ ui <- fluidPage(
           )
         ), mainPanel(
           h3(""),
+          class = "main",
           plotOutput("plot2"),
           tags$div(checked = NA, class = "discription",
                    tags$p("This plot shows the number of suicides in selected country during the selected year period.
@@ -213,8 +217,8 @@ ui <- fluidPage(
                       animate =
                         animationOptions(interval = 600, loop = TRUE))
         ), mainPanel(
-          class = "main",
           h3(""),
+          class = "main",
           plotlyOutput("plot3"),
           tags$div(checked = NA, class = "discription",
             tags$p("This plot gives an overview of the suicide rate worldwide.
