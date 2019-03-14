@@ -1,4 +1,3 @@
-
 get_plot <- function(data, year_selected, gdp_selected, c_data) {
   new_data <- data %>%
     filter(year >= min(year_selected),
