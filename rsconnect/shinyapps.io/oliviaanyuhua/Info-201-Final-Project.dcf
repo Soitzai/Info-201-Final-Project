@@ -5,8 +5,8 @@ account: oliviaanyuhua
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 789234
-bundleId: 1939267
+bundleId: 1940824
 url: https://oliviaanyuhua.shinyapps.io/Info-201-Final-Project/
-when: 1552563282.78466
+when: 1552601627.83538
 asMultiple: FALSE
 asStatic: FALSE
