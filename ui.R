@@ -7,6 +7,7 @@ library("rsconnect")
 
 data <- read.csv("./data/master.csv")
 data <- data %>% filter(year != 2016)
+
 country_list <- unique(as.character(data[,1]))
 year_range <- range(data$year)
 gdp_range <- range(data$gdp_per_capita....)
@@ -19,6 +20,7 @@ ui <- fluidPage(
     #first page
     tabPanel(
       "Overview",
+      
       sidebarLayout(
         sidebarPanel(
           class = "side",
@@ -48,6 +50,7 @@ ui <- fluidPage(
                    )
         ),
         mainPanel(
+          h3(""),
           class = "main",
           tags$blockquote("Every suicide is a tragedy. According to estimates 
                           from the World Health Organisation (WHO), over 800,000 
@@ -99,7 +102,7 @@ ui <- fluidPage(
         ),
         mainPanel(
           h3(""),
-          plotOutput("lineChart"),
+          plotOutput("line_chart"),
           tags$div(checked = NA, class = "discription",
                    tags$p("This plot shows the numbers of suicides per 100k population from 1985 to 2015, either for 
                           one certain age group or for all age group.It also gives the comparison of the numbers of suicides
