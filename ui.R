@@ -14,7 +14,7 @@ gdp_range <- range(data$gdp_per_capita....)
 ui <- fluidPage(
   theme = "style.css",
   # title
-  titlePanel("Suicide Rates Overview around the Globe (1985 - 2015)"),
+  titlePanel("Suicide Rates Overview 1985 to 2015"),
   tabsetPanel(
     #first page
     tabPanel(
@@ -31,6 +31,7 @@ ui <- fluidPage(
       "By Age-Group & Sex",
       sidebarLayout(
         sidebarPanel(
+          class = "side",
           radioButtons(
             "radio", 
             label = h3("Select the age group"),
@@ -62,6 +63,7 @@ ui <- fluidPage(
       "By GDP",
       sidebarLayout(
         sidebarPanel(
+          class = 'side',
           # selection
           selectInput(
             "input_year",
@@ -78,6 +80,7 @@ ui <- fluidPage(
       "By Country",
       sidebarLayout(
         sidebarPanel(
+          class = "side",
           # selection
           selectInput(
             "select", 
@@ -91,17 +94,17 @@ ui <- fluidPage(
             min = year_range[1],
             max = year_range[2],
             value = year_range
-            
           )
         ), mainPanel(
           plotOutput("plot2")
         )
       )
     ),
-    tabPanel( #second page
+    tabPanel( #Third page
       "Map",
       sidebarLayout(
         sidebarPanel(
+          class = "side",
           # selection
           sliderInput(
             "year_third",
@@ -116,9 +119,19 @@ ui <- fluidPage(
                       min = gdp_range[1], max = gdp_range[2],
                       value = c(gdp_range[1], gdp_range[1] + 1000), step = 1000,
                       animate =
-                        animationOptions(interval = 300, loop = TRUE))
+                        animationOptions(interval = 600, loop = TRUE))
         ), mainPanel(
-          plotlyOutput("plot3")
+          plotlyOutput("plot3"),
+          tags$div(checked = NA, class = "discription",
+            tags$p("This plot gives an overview of the suicide rate worldwide.
+                   The suicide rate is the suicide number
+                   dividing by the population/100 in the region."
+                   ),
+            tags$p("Viewers can further narrow down the years of interest
+                   and further investigate the distribution in the selected range.
+                   The animation shows a general trend over suicide rate
+                   as the GDP per capital progress.")
+          )
         )
       )
     )
