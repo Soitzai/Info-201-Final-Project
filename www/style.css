@@ -6,9 +6,11 @@ body {
 }
 h2{
   color:rgb(103, 91, 140);
-  line-height: 80px;
+  line-height: 60px;
   font-size: 30px;
-  text-align: center
+  text-align: center;
+  padding-top: 0;
+  padding-bottom: 15px
 }
 .side{background-image: linear-gradient(rgb(103, 91, 140), rgb(40, 33, 61))
 }
@@ -16,7 +18,7 @@ h2{
 	color: rgb(231, 223, 221)
 }
 .tab-content {
-  color: rgb(40, 33, 61)
+  color: rgb(242, 240, 239)
 }
 .discription {
   margin-top: 50px;

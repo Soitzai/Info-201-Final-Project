@@ -34,7 +34,7 @@ ui <- fluidPage(
           class = "side",
           radioButtons(
             "radio", 
-            label = h3("Select the age group"),
+            label = "Select the age group",
             choices = list("5-14 years",
                            "15-24 years",
                            "25-34 years",
@@ -67,7 +67,7 @@ ui <- fluidPage(
           # selection
           selectInput(
             "input_year",
-            label = "which year:",
+            label = "Which year:",
             choices = 1985:2015,
             multiple = FALSE
           )
@@ -115,7 +115,7 @@ ui <- fluidPage(
             step = 1
           ),
           sliderInput("gdp_third",
-                      "GDP per Capital",
+                      "GDP per capital",
                       min = gdp_range[1], max = gdp_range[2],
                       value = c(gdp_range[1], gdp_range[1] + 1000), step = 1000,
                       animate =
