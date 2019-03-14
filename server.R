@@ -9,8 +9,9 @@ source("ui.R")
 source("./scripts/geo_map.R")
 source("./scripts/country_plot.R")
 source("./scripts/gdp_plot.R")
+source("./scripts/comparison_plot.R")
 
-c_data <- read.csv("country.csv",stringsAsFactors = FALSE)
+c_data <- read.csv("./data/country.csv",stringsAsFactors = FALSE)
 shinyServer(function(input, output) {
   output$lineChart <- renderPlot({
     chartData <- data %>% 
@@ -57,7 +58,10 @@ shinyServer(function(input, output) {
   output$scartter_plot <- renderPlot({
     return(get_gdp_plot(data, input$input_year))
   })
-
+  
+  output$comparison <- renderPlot({
+    return(get_comparison_plot(data))
+  })
 
   output$plot2 <- renderPlot({
     return(get_country_plot(data, input$select, input$year_second))
