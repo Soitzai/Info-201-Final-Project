@@ -31,7 +31,7 @@ ui <- fluidPage(
         sidebarPanel(
           class = "side",
           # introduction to the project
-          tags$div(h3("Intro"),
+          tags$div(h3("Introduction"),
                    tags$b("Suicide is one of the top ten common causes of death
                           in the world. People may consider suicide when they
                           are hopeless and can't see any other solution to

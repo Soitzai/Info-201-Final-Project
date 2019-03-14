@@ -12,6 +12,9 @@ h2{
   padding-top: 15px;
   padding-right: 80px
 }
+h3{
+  color:rgb(164, 154, 191)
+}
 .side{background-image: linear-gradient(rgb(103, 91, 140), rgb(40, 33, 61))
 }
 .nav-tabs {
