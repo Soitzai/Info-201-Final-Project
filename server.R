@@ -65,27 +65,35 @@ shinyServer(function(input, output) {
                          input$input_year))
   })
   
-
-
+  output$comparison <- renderPlot({
+    datset <- c()
+    for (i in 1985:2015) {
+      dat <- data %>% 
+        filter(year == i) %>%
+        group_by(country, year, gdp_per_capita....) %>%
+        summarise(n = sum(suicides.100k.pop))
+      res <- lm(n~gdp_per_capita...., data = dat)
+      datset[i] <- as.numeric(res$coefficients[2])
+    }
+    plot(datset, xlim = c(1985,2015), xlab = "Year", 
+         ylab = "slope", main = "slope of regression line in each year", pch = 15, col = "blue")
+  })
+  
   output$plot2 <- renderPlot({
     dat <- data %>% 
       filter(data[, 1] == input$select) %>%
       filter(year >= input$year_second[1], year <= input$year_second[2]) %>%
       group_by(year) %>%
       summarise(n = sum(suicides_no))
-    plot(dat$year, dat$n, xlim = range(dat$year), ylim = range(dat$n), xlab = "Year", ylab = "number",
-         main = "title", pch=16)
     ggplot(dat, aes(year, n)) +
       geom_point(stat = "identity", color = "blue") +
       geom_line(color = "purple") +
       labs(x = "Year",
-           y = "number of suicides")
-
+           y = "number of suicides",
+           title = paste("number of suicides from ",input$year_second[1], " to ", input$year_second[2], " in ", input$select))
   })
-  
   
   output$plot3 <- renderPlotly({
     return(get_plot(data, input$year_third, input$gdp_third, c_data))
   })
 })
-
