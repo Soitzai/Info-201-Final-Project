@@ -12,13 +12,11 @@ h2{
   padding-top: 15px;
   padding-right: 80px
 }
-
 .side{background-image: linear-gradient(rgb(103, 91, 140), rgb(40, 33, 61))
 }
 .nav-tabs {
   border-bottom: 1px solid
 }
-
 .nav {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px

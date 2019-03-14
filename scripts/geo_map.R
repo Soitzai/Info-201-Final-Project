@@ -1,4 +1,5 @@
 get_plot <- function(data, year_selected, gdp_selected, c_data) {
+  print(gdp_selected)
   new_data <- data %>%
     filter(year >= min(year_selected),
            year <= max(year_selected),
@@ -6,12 +7,14 @@ get_plot <- function(data, year_selected, gdp_selected, c_data) {
            gdp_per_capita.... <= max(gdp_selected)) %>%
     group_by(country) %>%
     summarise(total = sum(suicides_no),
-              total_pop = sum(population)) %>%
+              total_pop = sum(as.numeric(population))) %>%
     mutate(country_code = countrycode(country, "country.name", "iso3c"),
            suicides_rate = total / total_pop * 100000)
   colnames(c_data)[colnames(c_data) == "ISO.alpha3.Code"] <- "country_code"
+  
   df <- left_join(c_data, new_data, by = "country_code")
   df[is.na(df)] <- 0
+  
 
   # light grey boundaries
   l <- list(color = toRGB("grey"), width = 0.5)

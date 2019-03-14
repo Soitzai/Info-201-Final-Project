@@ -281,11 +281,11 @@ ui <- fluidPage(
           ),
           # seelct the gdp range of interest
           sliderInput("gdp_third",
-                      "GDP per capital",
+                      label = "GDP per capital",
                       min = gdp_range[1], max = gdp_range[2],
-                      value = c(gdp_range[1], gdp_range[1] + 1000), step = 1000,
+                      value = c(gdp_range[1], gdp_range[1] + 3000), step = 1000,
                       animate =
-                        animationOptions(interval = 600, loop = TRUE))
+                        animationOptions(interval = 300, loop = TRUE))
         ), mainPanel(
           h3(""),
           class = "main",
