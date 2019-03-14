@@ -135,104 +135,104 @@ ui <- fluidPage(
                        tags$p(
                          "According to ",
                          tags$a(href =
-                         "https://afsp.org/about-suicide/suicide-statistics/",
-                          "American Foundation for Suicide Prevention"),
-                          ", in 2017, men died by suicide 3.54x more often
-                              than women.")
+                                  "https://afsp.org/about-suicide/suicide-statistics/",
+                                "American Foundation for Suicide Prevention"),
+                         ", in 2017, men died by suicide 3.54x more often
+                         than women.")
                        )
                        )
               )
-        ), tabPanel( #second page
-          "By GDP",
-          sidebarLayout(
-            sidebarPanel(
-              class = "side",
-              # selection
-              selectInput(
-                "input_year",
-                label = "Which year:",
-                choices = 1985:2015,
-                multiple = FALSE
-              )
-            ), mainPanel(
-              h3(""),
-              plotOutput("scartter_plot"),
-              tags$div(checked = NA, class = "discription",
-                       tags$p("This plot shows the comparison of GDP per capita
-                              and the number of suicides per 100k population in
-                              the selected year. It shows how the suicides
-                              condition is affected by GDP."
-                       ),
-                       tags$p("With the default values in 1985, we see that
-                              the regression line is slightly upward, which
-                              indicates that in 1985, a country with higher
-                              GDP per capita tends to have a higher suicides
-                              number per 100k population.")
-                       ),
-              plotOutput("comparison"),
-              tags$div(checked = NA, class = "discription",
-                       tags$p("To see how the relationship between GDP per
-                              capita and suicides per 100k population changes
-                              from 1985 to 2015, we plot the slope of each
-                              regression line for each year. According to the
-                              graph, we see that GDP per capita has less affect
-                              on suicide number per 100k population over time,
-                              especially after the year of 2000, GDP per capita
-                              has little affect on suicide number per 100k
-                              population. Since all the slopes have a positive
-                              value, that means country with a higher GDP per
-                              capita tends to have a higher suicides number per
-                              100k population."
-                       ))
-                       )
-                       )
-                       ), tabPanel( #third page
-                         "By Country",
-                         sidebarLayout(
-                           sidebarPanel(
-                             class = "side",
-                             # selection
-                             selectInput(
-                               "select",
-                               label = "Country",
-                               choices = country_list,
-                               selected = "United States"
-                             ),
-                             sliderInput(
-                               "year_second",
-                               label = "Year",
-                               min = year_range[1],
-                               max = year_range[2],
-                               value = year_range
-                             )
-                           ), mainPanel(
-                             h3(""),
-                             plotOutput("plot2"),
-                             tags$div(checked = NA, class = "discription",
-                             tags$p("This plot shows the number of suicides
-                                    in selected country during the selected
-                                    year period. It helps the users to
-                                    understand the suicide trend in a certain
-                                    country. By understanding the trend, the
-                                    governments/organizations can better
-                                    understand the suicide situation in
-                                    the country and therefore use appropriate
-                                    strategies to reduce the suicides."
-                                    ),
-                               tags$p("With the default values, suicide numbers
-                                      in the United States from 1985 to 2015,
-                                      we get the graph above, which shows the
-                                      trend of the number of suicides. The graph
-                                      shows that there is an incresing amount of
-                                      suicides in the United States, especially
-                                      after the year of 2000. It alerts the
-                                      governments/organizations to pay more
-                                      attentions about suicides situations
-                                      in the United States.")
-                                      )
-                                )
+          ), tabPanel( #second page
+            "By GDP",
+            sidebarLayout(
+              sidebarPanel(
+                class = "side",
+                # selection
+                selectInput(
+                  "input_year",
+                  label = "Which year:",
+                  choices = 1985:2015,
+                  multiple = FALSE
+                )
+              ), mainPanel(
+                h3(""),
+                plotOutput("scartter_plot"),
+                tags$div(checked = NA, class = "discription",
+                         tags$p("This plot shows the comparison of GDP per capita
+                                and the number of suicides per 100k population in
+                                the selected year. It shows how the suicides
+                                condition is affected by GDP."
+                         ),
+                         tags$p("With the default values in 1985, we see that
+                                the regression line is slightly upward, which
+                                indicates that in 1985, a country with higher
+                                GDP per capita tends to have a higher suicides
+                                number per 100k population.")
+                         ),
+                plotOutput("comparison"),
+                tags$div(checked = NA, class = "discription",
+                         tags$p("To see how the relationship between GDP per
+                                capita and suicides per 100k population changes
+                                from 1985 to 2015, we plot the slope of each
+                                regression line for each year. According to the
+                                graph, we see that GDP per capita has less affect
+                                on suicide number per 100k population over time,
+                                especially after the year of 2000, GDP per capita
+                                has little affect on suicide number per 100k
+                                population. Since all the slopes have a positive
+                                value, that means country with a higher GDP per
+                                capita tends to have a higher suicides number per
+                                100k population."
+                         ))
                          )
-             ),
+                         )
+                         ), tabPanel( #third page
+                           "By Country",
+                           sidebarLayout(
+                             sidebarPanel(
+                               class = "side",
+                               # selection
+                               selectInput(
+                                 "select",
+                                 label = "Country",
+                                 choices = country_list,
+                                 selected = "United States"
+                               ),
+                               sliderInput(
+                                 "year_second",
+                                 label = "Year",
+                                 min = year_range[1],
+                                 max = year_range[2],
+                                 value = year_range
+                               )
+                             ), mainPanel(
+                               h3(""),
+                               plotOutput("plot2"),
+                               tags$div(checked = NA, class = "discription",
+                                        tags$p("This plot shows the number of suicides
+                                               in selected country during the selected
+                                               year period. It helps the users to
+                                               understand the suicide trend in a certain
+                                               country. By understanding the trend, the
+                                               governments/organizations can better
+                                               understand the suicide situation in
+                                               the country and therefore use appropriate
+                                               strategies to reduce the suicides."
+                                        ),
+                                        tags$p("With the default values, suicide numbers
+                                               in the United States from 1985 to 2015,
+                                               we get the graph above, which shows the
+                                               trend of the number of suicides. The graph
+                                               shows that there is an incresing amount of
+                                               suicides in the United States, especially
+                                               after the year of 2000. It alerts the
+                                               governments/organizations to pay more
+                                               attentions about suicides situations
+                                               in the United States.")
+                                        )
+                                        )
+                                        )
+                                        ),
     tabPanel( #Third page
       "Map",
       sidebarLayout(
