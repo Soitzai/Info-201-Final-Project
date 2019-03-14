@@ -37,7 +37,18 @@ ui <- fluidPage(
                           are hopeless and can't see any other solution to
                           their problems. Often it's related to serious
                           depression, alcohol or substance abuse, or a major
-                          stressful event.")
+                          stressful event."),
+                tags$b("Our main purpose for this project is to show those who
+                           are interested in helping the suicide condition,
+                          such as governments and social organizations, about
+                          the trend and suicide condition from 1985 to 2015,
+                          also how suicide condition is related to age group,
+                          sex, GDP, etc. By doing this, we provide the useful
+                          information to help them identify and 
+                          better understand of the suicide condition,
+                          and therefore to come up with better policy
+                          and strategies to help the suicide condition
+                          both country wide and world wide.")
                    ),
           tags$div(h3("Questions"),
                    tags$ol(
