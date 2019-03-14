@@ -114,6 +114,7 @@ ui <- fluidPage(
             ),
             mainPanel(
               h3(""),
+              class = "main",
               plotOutput("line_chart"),
               tags$div(checked = NA, class = "discription",
                        tags$p("This plot shows the numbers of suicides per
@@ -156,6 +157,7 @@ ui <- fluidPage(
                 )
               ), mainPanel(
                 h3(""),
+                class = "main",
                 plotOutput("scartter_plot"),
                 tags$div(checked = NA, class = "discription",
                          tags$p("This plot shows the comparison of GDP per capita
@@ -207,6 +209,7 @@ ui <- fluidPage(
                                )
                              ), mainPanel(
                                h3(""),
+                               class = "main",
                                plotOutput("plot2"),
                                tags$div(checked = NA, class = "discription",
                                         tags$p("This plot shows the number of suicides
@@ -254,8 +257,8 @@ ui <- fluidPage(
                       animate =
                         animationOptions(interval = 600, loop = TRUE))
         ), mainPanel(
-          class = "main",
           h3(""),
+          class = "main",
           plotlyOutput("plot3"),
           tags$div(checked = NA, class = "discription",
                    tags$p("This plot gives an overview of the suicide rate
