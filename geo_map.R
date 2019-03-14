@@ -29,14 +29,27 @@ get_plot <- function(data, year_selected, gdp_selected, c_data) {
     projection = list(type = 'Mercator')
   )
   
+  m <- list(
+    t = 100,
+    pad = 4
+  )
+  
+  t <- list(
+    family = 'Helvetica Neue',
+    size = 24,
+    weight = 3)
+  
   p <- plot_geo(df) %>%
     add_trace(
-      z = ~suicides_rate, color = ~suicides_rate, colors = 'Blues',
-      text = ~country, locations = ~country_code, marker = list(line = l)
+      z = ~suicides_rate, color = ~suicides_rate, colors = 'Purples',
+      locations = ~country_code, marker = list(line = l)
+      
     ) %>%
-    colorbar(title = 'Suicide per 100K Population', tickprefix = '%') %>%
+    colorbar(title = 'Suicide / 100K Population', tickprefix = '%') %>%
     layout(
-      title = 'Suicide Distribution Across Countries',
+      margin = m,
+      title = 'Suicide Rate Distribution Across Countries',
+      titlefont = t,
       geo = g
     )
   return(p)
