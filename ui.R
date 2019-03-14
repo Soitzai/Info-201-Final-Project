@@ -56,15 +56,15 @@ ui <- fluidPage(
         mainPanel(
           class = "main",
           tags$div(h3("Insights"),
-                   tags$i("Our analysis shows that the number of male 
-                          suicides per 100k population is higher than 
-                          female's. The age group with the highest number of 
-                          suicides is 75+. From our analysis of GDP, we 
-                          conclude that GDP had a greater correlation with 
-                          suicide rates before 2000. The higher GDP, the 
-                          higher suicide case. In US, the number of suicides 
-                          was on the rise from 1985 to 2015. In 2015, 
-                          Lithuania and south korea are outliers of worldwide 
+                   tags$i("Our analysis shows that the number of male
+                          suicides per 100k population is higher than
+                          female's. The age group with the highest number of
+                          suicides is 75+. From our analysis of GDP, we
+                          conclude that GDP had a greater correlation with
+                          suicide rates before 2000. The higher GDP, the
+                          higher suicide case. In US, the number of suicides
+                          was on the rise from 1985 to 2015. In 2015,
+                          Lithuania and south korea are outliers of worldwide
                           suicide rate.")
                    ),
           tags$p(""),
@@ -82,7 +82,8 @@ ui <- fluidPage(
                  )),
           tags$p(""),
           tags$i("If you are concerning about your mental health?"),
-          tags$a(href = "https://suicidepreventionlifeline.org", "GET HELP NOW!")
+          tags$a(href = "https://suicidepreventionlifeline.org",
+                 "GET HELP NOW!")
           )
                    )
         ), tabPanel(
@@ -131,11 +132,12 @@ ui <- fluidPage(
                               government/organizations that male's suicide
                               situation definitely needs to be taken seriously.
                               "),
-                       tags$p("According to ",
-                              tags$a(href =
-                                       "https://afsp.org/about-suicide/suicide-statistics/",
-                                     "American Foundation for Suicide Prevention"),
-                              ", in 2017, men died by suicide 3.54x more often
+                       tags$p(
+                         "According to ",
+                         tags$a(href =
+                         "https://afsp.org/about-suicide/suicide-statistics/",
+                          "American Foundation for Suicide Prevention"),
+                          ", in 2017, men died by suicide 3.54x more often
                               than women.")
                        )
                        )
@@ -207,30 +209,30 @@ ui <- fluidPage(
                              h3(""),
                              plotOutput("plot2"),
                              tags$div(checked = NA, class = "discription",
-                                      tags$p("This plot shows the number of suicides
-                                             in selected country during the selected
-                                             year period. It helps the users to
-                                             understand the suicide trend in a certain
-                                             country. By understanding the trend, the
-                                             governments/organizations can better
-                                             understand the suicide situation in
-                                             the country and therefore use appropriate
-                                             strategies to reduce the suicides."
-                                      ),
-                                      tags$p("With the default values, suicide numbers
-                                             in the United States from 1985 to 2015,
-                                             we get the graph above, which shows the
-                                             trend of the number of suicides. The graph
-                                             shows that there is an incresing amount of
-                                             suicides in the United States, especially
-                                             after the year of 2000. It alerts the
-                                             governments/organizations to pay more
-                                             attentions about suicides situations
-                                             in the United States.")
+                             tags$p("This plot shows the number of suicides
+                                    in selected country during the selected
+                                    year period. It helps the users to
+                                    understand the suicide trend in a certain
+                                    country. By understanding the trend, the
+                                    governments/organizations can better
+                                    understand the suicide situation in
+                                    the country and therefore use appropriate
+                                    strategies to reduce the suicides."
+                                    ),
+                               tags$p("With the default values, suicide numbers
+                                      in the United States from 1985 to 2015,
+                                      we get the graph above, which shows the
+                                      trend of the number of suicides. The graph
+                                      shows that there is an incresing amount of
+                                      suicides in the United States, especially
+                                      after the year of 2000. It alerts the
+                                      governments/organizations to pay more
+                                      attentions about suicides situations
+                                      in the United States.")
                                       )
-                                      )
-                                      )
-                                      ),
+                                )
+                         )
+             ),
     tabPanel( #Third page
       "Map",
       sidebarLayout(
