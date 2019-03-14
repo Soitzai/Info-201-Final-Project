@@ -1,7 +1,3 @@
-#library(shiny)
-#library(dplyr)
-#library(plotly)
-#library(countrycode)
 
 get_plot <- function(data, year_selected, gdp_selected, c_data) {
   new_data <- data %>%
@@ -36,7 +32,7 @@ get_plot <- function(data, year_selected, gdp_selected, c_data) {
   
   t <- list(
     family = 'Helvetica Neue',
-    size = 24,
+    size = 18,
     weight = 3)
   
   p <- plot_geo(df) %>%
