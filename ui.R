@@ -6,14 +6,15 @@ library("plotly")
 library("rsconnect")
 
 data <- read.csv("master.csv")
-country_list <- as.character(data[,1])
+data <- data %>% filter(year != 2016)
+country_list <- unique(as.character(data[,1]))
 year_range <- range(data$year)
 gdp_range <- range(data$gdp_per_capita....)
 
 ui <- fluidPage(
   theme = "style.css",
   # title
-  titlePanel("Suicide Rates Overview 1985 to 2016"),
+  titlePanel("Suicide Rates Overview around the Globe (1985 - 2015)"),
   tabsetPanel(
     #first page
     tabPanel(
@@ -27,7 +28,7 @@ ui <- fluidPage(
         )
       )
     ),tabPanel(
-      "first page",
+      "By Age-Group & Sex",
       sidebarLayout(
         sidebarPanel(
           radioButtons(
@@ -38,7 +39,8 @@ ui <- fluidPage(
                            "25-34 years",
                            "35-54 years",
                            "55-74 years",
-                           "75+ years"
+                           "75+ years",
+                           "all age group"
             ),
             selected = "25-34 years"
           ),
@@ -51,13 +53,13 @@ ui <- fluidPage(
           checkboxInput("hor", "Show horizontal axis", TRUE)
         ),
         mainPanel(
-          h2("Main Panel"),
+          h2(""),
           textOutput("text1"),
           plotOutput("lineChart")
         )
       )
     ), tabPanel( #second page
-      "Scartter plot",
+      "By GDP",
       sidebarLayout(
         sidebarPanel(
           # selection
@@ -69,26 +71,27 @@ ui <- fluidPage(
           )
         ), mainPanel(
           plotOutput("scartter_plot")
+          ##################################################
         )
       )
-    ),tabPanel( #second page
-      "Number of suicdes based on country and years",
+    ),tabPanel( #third page
+      "By Country",
       sidebarLayout(
         sidebarPanel(
           # selection
           selectInput(
             "select", 
-            label = ("Country"), 
-            choices = country_list
+            label = "Country", 
+            choices = country_list,
+            selected = "United States"
           ), 
           sliderInput(
             "year_second",
             label = "Year",
             min = year_range[1],
             max = year_range[2],
-            value = year_range,
-            round = T,
-            format = "####"
+            value = year_range
+            
           )
         ), mainPanel(
           plotOutput("plot2")
