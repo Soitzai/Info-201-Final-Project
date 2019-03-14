@@ -59,7 +59,7 @@ ui <- fluidPage(
                              tags$br(),
                              tags$b("-- Resolved by By Age-Group & Sex")),
                      tags$p(""),
-                     tags$li(tags$i("How to find the correlation between GDP
+                     tags$li(tags$i("What's the correlation between GDP
                                     and suicide numbers?"),
                              tags$br(), tags$b("-- Resolved by By GDP")),
                      tags$p(""),
@@ -82,12 +82,20 @@ ui <- fluidPage(
                           suicides is 75+. From our analysis of GDP, we
                           conclude that GDP had a greater correlation with
                           suicide rates before 2000. The higher GDP, the
-                          higher suicide case. In US, the number of suicides
+                          more suicide case. In US, the number of suicides
                           was on the rise from 1985 to 2015. In 2015,
                           Lithuania and south korea are outliers of worldwide
                           suicide rate.")
                    ),
           tags$p(""),
+          tags$blockquote("Every suicide is a tragedy. According to estimates 
+                          from the World Health Organisation (WHO), over 
+                          800,000 people die due to suicide every year. 
+                          This corresponds to an age-standardized suicide 
+                          rate of around 11.5 per 100,000 people – a figure 
+                          equivalent to someone dying of suicide every 40 
+                          seconds. Yet suicides are preventable with timely, 
+                          evidence-based interventions."),
           tags$blockquote("Understanding the issues concerning suicide and
                           mental health is an important way to take part in
                           suicide prevention. Our analysis is dedicated to
